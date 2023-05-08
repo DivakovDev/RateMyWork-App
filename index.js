@@ -8,7 +8,6 @@ const readyReviews = document.getElementById("ready-reviews");
 let publishReview = "";
 
 publishBtn.addEventListener("click", function () {
-
   function check() {
     if (
       writeReview.value === "" ||
