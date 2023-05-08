@@ -36,7 +36,4 @@ publishBtn.addEventListener("click", function(){
     readyReviews.innerHTML = publishReview
 })
 
-like.addEventListener("click",function(){
-    likesCount+= 1
-})
 
