@@ -42,9 +42,12 @@ body {
 }
 
 #write-review:focus {
-  text-align: center;
   color: #707575;
 }
+
+#write-review:focus::placeholder {
+    opacity: 0;
+  }
 
 .to-from-inputs {
   display: flex;
@@ -77,6 +80,9 @@ body {
   text-align: center;
   color: #707575;
 }
+#to-input:focus::placeholder {
+  opacity: 0;
+}
 
 #from-input {
   text-align: center;
@@ -97,6 +103,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+#from-input:focus::placeholder {
+    opacity: 0;
+  }
 
 #publish-btn {
   padding: 25px 0px;
@@ -115,7 +124,7 @@ body {
 }
 
 .ready-review {
-  margin-top: 20px;
+  margin: 20px 0px;
   background: white;
   color: black;
   padding: 5px 20px;
