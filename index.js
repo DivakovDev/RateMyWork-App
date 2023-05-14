@@ -30,12 +30,12 @@ addButtonEl.addEventListener("click", function() {
 
 onValue(reviewsInDB, function(snapshot) {
   if (snapshot.exists()) {
-      let itemsArray = Object.entries(snapshot.val())
+      let reviewsArray = Object.entries(snapshot.val())
   
       clearEl()
       
-      for (let i = 0; i < itemsArray.length; i++) {
-          let currentItem = itemsArray[i]
+      for (let i = 0; i < reviewsArray.length; i++) {
+          let currentItem = reviewsArray[i]
           let currentItemID = currentItem[0]
           let currentItemValue = currentItem[1]
           
@@ -55,18 +55,18 @@ function clearInputFieldEl() {
 }
 
 function appendItemToreadyReviewsEl(item) {
-  let itemID = item[0]
-  let itemValue = item[1]
+  let reviewsId = item[0]
+  let reviewsValue = item[1]
   
-  let newEl = document.createElement("li")
+  let newReview = document.createElement("li")
   
-  newEl.textContent = itemValue
+  newReview.textContent = reviewsValue
   
-  newEl.addEventListener("click", function() {
-      let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+  newReview.addEventListener("click", function() {
+      let exactLocationOfItemInDB = ref(database, `shoppingList/${reviewsId}`)
       
       remove(exactLocationOfItemInDB)
   })
   
-  readyReviewsEl.append(newEl)
+  readyReviewsEl.append(newReview)
 }
