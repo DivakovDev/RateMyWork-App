@@ -15,38 +15,58 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const reviewsInDB = ref(database, "reviews");
 
-const writeReview = document.getElementById("write-review");
+const inputFieldEl = document.getElementById("write-review");
 
-const publishBtn = document.getElementById("publish-btn");
-const readyReviews = document.getElementById("ready-reviews");
+const addButtonEl = document.getElementById("publish-btn");
+const readyReviewsEl = document.getElementById("ready-reviews");
 
-let publishReview = "";
+addButtonEl.addEventListener("click", function() {
+  let inputValue = inputFieldEl.value
+  
+  push(reviewsInDB, inputValue)
+  
+  clearInputFieldEl()
+})
 
-publishBtn.addEventListener("click", function () {
-  check();
-  publishReview = readyReviews.innerHTML;
-  push(reviewsInDB, readyReviews.innerHTML);
-});
-
-function check() {
-  if (
-    writeReview.value === ""
-  ) {
-    emptyReview();
-  }else{
-    addReviews(writeReview.value)
-    console.log("clicked");
+onValue(reviewsInDB, function(snapshot) {
+  if (snapshot.exists()) {
+      let itemsArray = Object.entries(snapshot.val())
+  
+      clearEl()
+      
+      for (let i = 0; i < itemsArray.length; i++) {
+          let currentItem = itemsArray[i]
+          let currentItemID = currentItem[0]
+          let currentItemValue = currentItem[1]
+          
+          appendItemToreadyReviewsEl(currentItem)
+      }    
+  } else {
+    readyReviewsEl.innerHTML = "No items here... yet"
   }
+})
+
+function clearEl() {
+  readyReviewsEl.innerHTML = ""
 }
 
-function emptyReview() {
-  publishReview = ""
+function clearInputFieldEl() {
+  inputFieldEl.value = ""
 }
 
-function addReviews(Review) {
-  readyReviews.innerHTML += `
-  <li class="ready-review">
-      <p>${Review}</p>
-  </li>
-  `;
+function appendItemToreadyReviewsEl(item) {
+  let itemID = item[0]
+  let itemValue = item[1]
+  
+  let newEl = document.createElement("li")
+  
+  newEl.textContent = itemValue
+  
+  newEl.addEventListener("click", function() {
+      let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+      
+      remove(exactLocationOfItemInDB)
+  })
+  
+  readyReviewsEl.append(newEl)
 }
