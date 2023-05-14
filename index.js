@@ -16,8 +16,6 @@ const database = getDatabase(app);
 const reviewsInDB = ref(database, "reviews");
 
 const writeReview = document.getElementById("write-review");
-const writeTo = document.getElementById("to-input");
-const writeFrom = document.getElementById("from-input");
 
 const publishBtn = document.getElementById("publish-btn");
 const readyReviews = document.getElementById("ready-reviews");
@@ -26,35 +24,29 @@ let publishReview = "";
 
 publishBtn.addEventListener("click", function () {
   check();
-
   publishReview = readyReviews.innerHTML;
   push(reviewsInDB, readyReviews.innerHTML);
 });
 
 function check() {
   if (
-    writeReview.value === "" ||
-    writeFrom.value === "" ||
-    writeTo.value === ""
+    writeReview.value === ""
   ) {
     emptyReview();
   }else{
-    addReviews(writeTo.value, writeReview.value, writeFrom.value)
+    addReviews(writeReview.value)
+    console.log("clicked");
   }
 }
 
 function emptyReview() {
-  publishReview
+  publishReview = ""
 }
 
-function addReviews(To, Review, From) {
+function addReviews(Review) {
   readyReviews.innerHTML += `
-  <div class="ready-review">
-      <h3>${To} </h3>
+  <li class="ready-review">
       <p>${Review}</p>
-      <div class="from-rate">
-        <h3 class="from">${From}</h3>
-      </div>   
-  </div>
+  </li>
   `;
 }

@@ -2,8 +2,6 @@ body {
   margin: auto;
   background: #1b1924;
   color: white;
-  display: flex;
-  justify-content: center;
   text-align: center;
   max-width: 400px;
 }
@@ -25,9 +23,9 @@ body {
 #write-review {
   text-align: start;
   align-items: start;
-  margin: 0px 20px;
+  margin: 10px 20px;
   height: 150px;
-  width: 99%;
+  width: 100%;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -61,56 +59,6 @@ body {
   margin-right: auto;
 }
 
-#to-input {
-  text-align: center;
-  padding: 10px 0px;
-  margin-left: 5px;
-  width: 50%;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
-  color: #707575;
-  background: #444059;
-  font-family: "Inter", sans-serif;
-}
-#to-input::placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#to-input:focus {
-  text-align: center;
-  color: #707575;
-}
-#to-input:focus::placeholder {
-  opacity: 0;
-}
-
-#from-input {
-  text-align: center;
-  padding: 10px 0px;
-  margin-right: 5px;
-  width: 50%;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
-  color: #707575;
-  background: #444059;
-  font-family: "Inter", sans-serif;
-}
-
-#from-input::placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#from-input:focus::placeholder {
-    opacity: 0;
-  }
-
 #publish-btn {
   padding: 25px 0px;
   border-radius: 10px;
@@ -135,36 +83,5 @@ body {
   font-size: 16px;
   font-family: "Inter", sans-serif;
   text-align: start;
-}
-
-.rate-img {
-  width: 20px;
-}
-
-.from-rate {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-}
-
-.from {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.likes {
-  display: flex;
-  margin-top: 0;
-}
-
-.likes h3 {
-    padding-bottom: 2px;
-  margin: auto;
-  font-family: "Inter", sans-serif;
-}
-
-.likes button {
-  border: none;
-  background: transparent;
-  margin: auto;
+  list-style-type: none
 }
